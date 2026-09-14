@@ -704,7 +704,7 @@ td {
 
         grid-template-columns:
             repeat(2, 1fr);
-    }
+    } 
  
     .logout-button {
         margin-top: 15px;
