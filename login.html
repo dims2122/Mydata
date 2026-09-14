@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Login Admin - Management Website Business"
+    >
+
+    <title>Login Admin | Website Management</title>
+
+    <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body>
+
+    <main class="login-page">
+
+        <div class="login-card">
+
+            <!-- LOGO / BRAND -->
+            <div class="login-header">
+                <div class="logo">
+                    WB
+                </div>
+
+                <h1>Welcome Back</h1>
+
+                <p>
+                    Login ke dashboard admin kamu
+                </p>
+            </div>
+
+            <!-- LOGIN FORM -->
+            <form id="loginForm">
+
+                <div class="form-group">
+                    <label for="email">
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="admin@email.com"
+                        autocomplete="email"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <div class="password-wrapper">
+
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Masukkan password"
+                            autocomplete="current-password"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            id="togglePassword"
+                            aria-label="Tampilkan password"
+                        >
+                            👁
+                        </button>
+
+                    </div>
+                </div>
+
+                <!-- ERROR MESSAGE -->
+                <p id="loginError" class="login-error"></p>
+
+                <button
+                    type="submit"
+                    id="loginButton"
+                    class="login-button"
+                >
+                    Login
+                </button>
+
+            </form>
+
+            <div class="login-footer">
+                <p>
+                    Admin Dashboard
+                </p>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- SUPABASE -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- LOGIN JS -->
+    <script src="js/login.js"></script>
+
+</body>
+</html>

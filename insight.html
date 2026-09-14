@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Insight | Admin Dashboard</title>
+
+    <link rel="stylesheet" href="css/insight.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-logo">WB</div>
+
+            <div>
+                <h2>WebBusiness</h2>
+                <span>Admin Panel</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <a href="dashboard.html">
+                <span>📊</span>
+                Dashboard
+            </a>
+
+            <a href="customers.html">
+                <span>👥</span>
+                Pelanggan
+            </a>
+
+            <a href="packages.html">
+                <span>📦</span>
+                Paket
+            </a>
+
+            <a href="projects.html">
+                <span>📁</span>
+                Project
+            </a>
+
+            <a href="insight.html" class="active">
+                <span>📈</span>
+                Insight
+            </a>
+
+            <a href="hosting.html">
+                <span>🖥️</span>
+                Hosting
+            </a>
+
+            <a href="settings.html">
+                <span>⚙️</span>
+                Pengaturan
+            </a>
+
+        </nav>
+
+        <button id="logoutButton" class="logout-button">
+            <span>🚪</span>
+            Logout
+        </button>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="main-content">
+
+        <header class="topbar">
+
+            <div>
+                <h1>Insight</h1>
+                <p>
+                    Lihat perkembangan bisnis website kamu.
+                </p>
+            </div>
+
+        </header>
+
+
+        <!-- STAT CARDS -->
+        <section class="stats-grid">
+
+            <div class="stat-card">
+
+                <div class="stat-icon revenue">
+                    💰
+                </div>
+
+                <div>
+                    <span>Total Pendapatan</span>
+                    <h2 id="totalRevenue">
+                        Rp0
+                    </h2>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon customers">
+                    👥
+                </div>
+
+                <div>
+                    <span>Total Pelanggan</span>
+                    <h2 id="totalCustomers">
+                        0
+                    </h2>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon projects">
+                    📁
+                </div>
+
+                <div>
+                    <span>Total Project</span>
+                    <h2 id="totalProjects">
+                        0
+                    </h2>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon average">
+                    📊
+                </div>
+
+                <div>
+                    <span>Rata-rata Project</span>
+                    <h2 id="averageProject">
+                        Rp0
+                    </h2>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- TWO COLUMNS -->
+        <section class="insight-grid">
+
+            <!-- CUSTOMER STATUS -->
+            <div class="card">
+
+                <div class="card-header">
+                    <div>
+                        <h3>Status Pelanggan</h3>
+                        <p>Distribusi pelanggan berdasarkan status.</p>
+                    </div>
+                </div>
+
+                <div id="customerStatus" class="status-list">
+                    <div class="loading">
+                        Memuat data...
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- PROJECT STATUS -->
+            <div class="card">
+
+                <div class="card-header">
+                    <div>
+                        <h3>Status Project</h3>
+                        <p>Perkembangan project saat ini.</p>
+                    </div>
+                </div>
+
+                <div id="projectStatus" class="status-list">
+                    <div class="loading">
+                        Memuat data...
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PACKAGE + PAYMENT -->
+        <section class="insight-grid">
+
+            <div class="card">
+
+                <div class="card-header">
+                    <div>
+                        <h3>Paket Terlaris</h3>
+                        <p>Paket yang paling banyak dipilih.</p>
+                    </div>
+                </div>
+
+                <div id="packageInsight">
+                    <div class="loading">
+                        Memuat data...
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-header">
+                    <div>
+                        <h3>Metode Pembayaran</h3>
+                        <p>Metode pembayaran yang digunakan.</p>
+                    </div>
+                </div>
+
+                <div id="paymentInsight">
+                    <div class="loading">
+                        Memuat data...
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- MONTHLY REVENUE -->
+        <section class="card revenue-card">
+
+            <div class="card-header">
+
+                <div>
+                    <h3>Pendapatan Bulanan</h3>
+                    <p>
+                        Ringkasan pendapatan dari pembayaran project.
+                    </p>
+                </div>
+
+            </div>
+
+            <div id="monthlyRevenue" class="monthly-list">
+
+                <div class="loading">
+                    Memuat data...
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- TOP PROJECTS -->
+        <section class="card">
+
+            <div class="card-header">
+
+                <div>
+                    <h3>Project dengan Nilai Terbesar</h3>
+                    <p>
+                        Project berdasarkan nilai paket.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>Project</th>
+                            <th>Pelanggan</th>
+                            <th>Paket</th>
+                            <th>Nilai</th>
+                            <th>Status</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="topProjects">
+
+                        <tr>
+                            <td colspan="5" class="loading">
+                                Memuat data...
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- SUPABASE -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="js/insight.js"></script>
+
+</body>
+</html>

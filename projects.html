@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Project | Management</title>
+
+    <link
+        rel="stylesheet"
+        href="css/projects.css"
+    >
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- ========================================
+         SIDEBAR
+    ======================================== -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-brand">
+
+            <div class="brand-icon">
+                WB
+            </div>
+
+            <div>
+                <h2>WebBusiness</h2>
+                <span>Management</span>
+            </div>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <a
+                href="dashboard.html"
+                class="nav-item"
+            >
+                <span class="nav-icon">📊</span>
+                <span>Dashboard</span>
+            </a>
+
+
+            <a
+                href="customers.html"
+                class="nav-item"
+            >
+                <span class="nav-icon">👥</span>
+                <span>Pelanggan</span>
+            </a>
+
+
+            <a
+                href="packages.html"
+                class="nav-item"
+            >
+                <span class="nav-icon">📦</span>
+                <span>Paket</span>
+            </a>
+
+
+            <a
+                href="projects.html"
+                class="nav-item active"
+            >
+                <span class="nav-icon">📁</span>
+                <span>Project</span>
+            </a>
+
+
+            <a
+                href="insight.html"
+                class="nav-item"
+            >
+                <span class="nav-icon">📈</span>
+                <span>Insight</span>
+            </a>
+
+
+            <a
+                href="hosting.html"
+                class="nav-item"
+            >
+                <span class="nav-icon">🖥️</span>
+                <span>Hosting</span>
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <a
+                href="settings.html"
+                class="nav-item"
+            >
+                <span class="nav-icon">⚙️</span>
+                <span>Pengaturan</span>
+            </a>
+
+
+            <button
+                id="logoutButton"
+                class="logout-button"
+            >
+                <span class="nav-icon">🚪</span>
+                <span>Logout</span>
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ========================================
+         MAIN
+    ======================================== -->
+
+    <main class="main-content">
+
+        <header class="topbar">
+
+            <div>
+
+                <p class="page-label">
+                    PROJECT MANAGEMENT
+                </p>
+
+                <h1>Project</h1>
+
+                <p class="page-description">
+                    Kelola seluruh project website pelanggan.
+                </p>
+
+            </div>
+
+
+            <button
+                id="addProjectButton"
+                class="primary-button"
+            >
+                + Tambah Project
+            </button>
+
+        </header>
+
+
+        <!-- ========================================
+             TOOLBAR
+        ======================================== -->
+
+        <section class="toolbar">
+
+            <div class="search-box">
+
+                <span>🔎</span>
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Cari project atau pelanggan..."
+                >
+
+            </div>
+
+
+            <select id="statusFilter">
+
+                <option value="all">
+                    Semua Status
+                </option>
+
+                <option value="pending">
+                    Pending
+                </option>
+
+                <option value="in_progress">
+                    Dalam Proses
+                </option>
+
+                <option value="revision">
+                    Revisi
+                </option>
+
+                <option value="completed">
+                    Selesai
+                </option>
+
+                <option value="cancelled">
+                    Dibatalkan
+                </option>
+
+            </select>
+
+        </section>
+
+
+        <!-- ========================================
+             PROJECT TABLE
+        ======================================== -->
+
+        <section class="table-card">
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Project</th>
+
+                            <th>Pelanggan</th>
+
+                            <th>Paket</th>
+
+                            <th>Harga</th>
+
+                            <th>Deadline</th>
+
+                            <th>Status</th>
+
+                            <th>Aksi</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="projectTableBody">
+
+                        <tr>
+
+                            <td
+                                colspan="7"
+                                class="loading"
+                            >
+                                Memuat data...
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- ========================================
+     MODAL PROJECT
+======================================== -->
+
+<div
+    id="projectModal"
+    class="modal"
+>
+
+    <div class="modal-overlay"></div>
+
+
+    <div class="modal-card">
+
+        <div class="modal-header">
+
+            <div>
+
+                <span class="section-label">
+                    PROJECT
+                </span>
+
+                <h2 id="modalTitle">
+                    Tambah Project
+                </h2>
+
+            </div>
+
+
+            <button
+                type="button"
+                id="closeModal"
+                class="close-button"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="projectForm">
+
+            <input
+                type="hidden"
+                id="projectId"
+            >
+
+
+            <div class="form-group">
+
+                <label>
+                    Pelanggan *
+                </label>
+
+                <select
+                    id="customerId"
+                    required
+                >
+
+                    <option value="">
+                        Pilih pelanggan
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Nama Project *
+                </label>
+
+                <input
+                    type="text"
+                    id="projectName"
+                    placeholder="Contoh: Website Toko Budi"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-grid">
+
+                <div class="form-group">
+
+                    <label>
+                        Paket
+                    </label>
+
+                    <select id="packageId">
+
+                        <option value="">
+                            Pilih paket
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Status
+                    </label>
+
+                    <select id="status">
+
+                        <option value="pending">
+                            Pending
+                        </option>
+
+                        <option value="in_progress">
+                            Dalam Proses
+                        </option>
+
+                        <option value="revision">
+                            Revisi
+                        </option>
+
+                        <option value="completed">
+                            Selesai
+                        </option>
+
+                        <option value="cancelled">
+                            Dibatalkan
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Tanggal Mulai
+                    </label>
+
+                    <input
+                        type="date"
+                        id="startDate"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Deadline
+                    </label>
+
+                    <input
+                        type="date"
+                        id="deadline"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="packageInfo"
+                class="package-info"
+            >
+                Pilih paket untuk melihat harga.
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Catatan
+                </label>
+
+                <textarea
+                    id="notes"
+                    rows="4"
+                    placeholder="Catatan project..."
+                ></textarea>
+
+            </div>
+
+
+            <p
+                id="formError"
+                class="form-error"
+            ></p>
+
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    id="cancelButton"
+                    class="secondary-button"
+                >
+                    Batal
+                </button>
+
+
+                <button
+                    type="submit"
+                    id="saveButton"
+                    class="primary-button"
+                >
+                    Simpan Project
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="js/projects.js"></script>
+
+</body>
+
+</html>

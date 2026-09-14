@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Pelanggan | Management</title>
+
+    <link
+        rel="stylesheet"
+        href="css/customers.css"
+    >
+
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="sidebar-brand">
+
+            <div class="brand-icon">
+                WB
+            </div>
+
+            <div>
+                <h2>WebBusiness</h2>
+                <span>Management</span>
+            </div>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <a
+                href="dashboard.html"
+                class="nav-item"
+            >
+                <span class="nav-icon">📊</span>
+                <span>Dashboard</span>
+            </a>
+
+
+            <a
+                href="customers.html"
+                class="nav-item active"
+            >
+                <span class="nav-icon">👥</span>
+                <span>Pelanggan</span>
+            </a>
+
+
+            <a
+                href="packages.html"
+                class="nav-item"
+            >
+                <span class="nav-icon">📦</span>
+                <span>Paket</span>
+            </a>
+
+
+            <a
+                href="projects.html"
+                class="nav-item"
+            >
+                <span class="nav-icon">📁</span>
+                <span>Project</span>
+            </a>
+
+
+            <a
+                href="insight.html"
+                class="nav-item"
+            >
+                <span class="nav-icon">📈</span>
+                <span>Insight</span>
+            </a>
+
+
+            <a
+                href="hosting.html"
+                class="nav-item"
+            >
+                <span class="nav-icon">🖥️</span>
+                <span>Hosting</span>
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <a
+                href="settings.html"
+                class="nav-item"
+            >
+                <span class="nav-icon">⚙️</span>
+                <span>Pengaturan</span>
+            </a>
+
+
+            <button
+                id="logoutButton"
+                class="logout-button"
+            >
+                <span class="nav-icon">🚪</span>
+                <span>Logout</span>
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="main-content">
+
+        <header class="topbar">
+
+            <div>
+
+                <p class="page-label">
+                    CUSTOMER MANAGEMENT
+                </p>
+
+                <h1>Pelanggan</h1>
+
+                <p class="page-description">
+                    Kelola data calon pelanggan dan pelanggan kamu.
+                </p>
+
+            </div>
+
+
+            <button
+                id="addCustomerButton"
+                class="primary-button"
+            >
+                + Tambah Pelanggan
+            </button>
+
+        </header>
+
+
+        <!-- TOOLBAR -->
+
+        <section class="toolbar">
+
+            <div class="search-box">
+
+                <span>🔎</span>
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Cari pelanggan..."
+                >
+
+            </div>
+
+
+            <select id="statusFilter">
+
+                <option value="all">
+                    Semua Status
+                </option>
+
+                <option value="prospect">
+                    Prospect
+                </option>
+
+                <option value="negotiation">
+                    Negosiasi
+                </option>
+
+                <option value="confirmed">
+                    Confirmed
+                </option>
+
+                <option value="in_progress">
+                    Dalam Proses
+                </option>
+
+                <option value="completed">
+                    Selesai
+                </option>
+
+                <option value="cancelled">
+                    Dibatalkan
+                </option>
+
+            </select>
+
+        </section>
+
+
+        <!-- TABLE -->
+
+        <section class="table-card">
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Pelanggan</th>
+                            <th>Usaha</th>
+                            <th>Kontak</th>
+                            <th>Paket</th>
+                            <th>Pembayaran</th>
+                            <th>Status</th>
+                            <th>Aksi</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="customerTableBody">
+
+                        <tr>
+
+                            <td
+                                colspan="7"
+                                class="loading"
+                            >
+                                Memuat data...
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- ========================================
+     MODAL
+======================================== -->
+
+<div
+    id="customerModal"
+    class="modal"
+>
+
+    <div class="modal-overlay"></div>
+
+
+    <div class="modal-card">
+
+        <div class="modal-header">
+
+            <div>
+
+                <span class="section-label">
+                    CUSTOMER
+                </span>
+
+                <h2 id="modalTitle">
+                    Tambah Pelanggan
+                </h2>
+
+            </div>
+
+
+            <button
+                id="closeModal"
+                class="close-button"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="customerForm">
+
+            <input
+                type="hidden"
+                id="customerId"
+            >
+
+
+            <div class="form-grid">
+
+                <div class="form-group">
+
+                    <label>
+                        Nama *
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        WhatsApp
+                    </label>
+
+                    <input
+                        type="text"
+                        id="phone"
+                        placeholder="08xxxxxxxxxx"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Nama Usaha
+                    </label>
+
+                    <input
+                        type="text"
+                        id="businessName"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Nama Website
+                    </label>
+
+                    <input
+                        type="text"
+                        id="websiteName"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Paket
+                    </label>
+
+                    <select id="packageId">
+
+                        <option value="">
+                            Pilih paket
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Metode Pembayaran
+                    </label>
+
+                    <select id="paymentMethod">
+
+                        <option value="transfer">
+                            Transfer
+                        </option>
+
+                        <option value="cash">
+                            Cash
+                        </option>
+
+                        <option value="qris">
+                            QRIS
+                        </option>
+
+                        <option value="debit">
+                            Debit
+                        </option>
+
+                        <option value="credit">
+                            Credit
+                        </option>
+
+                        <option value="other">
+                            Lainnya
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Status
+                    </label>
+
+                    <select id="status">
+
+                        <option value="prospect">
+                            Prospect
+                        </option>
+
+                        <option value="negotiation">
+                            Negosiasi
+                        </option>
+
+                        <option value="confirmed">
+                            Confirmed
+                        </option>
+
+                        <option value="in_progress">
+                            Dalam Proses
+                        </option>
+
+                        <option value="completed">
+                            Selesai
+                        </option>
+
+                        <option value="cancelled">
+                            Dibatalkan
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Alamat
+                </label>
+
+                <textarea
+                    id="address"
+                    rows="3"
+                ></textarea>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Catatan
+                </label>
+
+                <textarea
+                    id="notes"
+                    rows="4"
+                ></textarea>
+
+            </div>
+
+
+            <p
+                id="formError"
+                class="form-error"
+            ></p>
+
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    id="cancelButton"
+                    class="secondary-button"
+                >
+                    Batal
+                </button>
+
+
+                <button
+                    type="submit"
+                    id="saveButton"
+                    class="primary-button"
+                >
+                    Simpan Pelanggan
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="js/customers.js"></script>
+
+</body>
+</html>

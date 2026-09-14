@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard | Management</title>
+
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="sidebar-brand">
+            <div class="brand-icon">WB</div>
+
+            <div>
+                <h2>WebBusiness</h2>
+                <span>Management</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <a href="dashboard.html" class="nav-item active">
+                <span class="nav-icon">📊</span>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="customers.html" class="nav-item">
+                <span class="nav-icon">👥</span>
+                <span>Pelanggan</span>
+            </a>
+
+            <a href="packages.html" class="nav-item">
+                <span class="nav-icon">📦</span>
+                <span>Paket</span>
+            </a>
+
+            <a href="projects.html" class="nav-item">
+                <span class="nav-icon">📁</span>
+                <span>Project</span>
+            </a>
+
+            <a href="insight.html" class="nav-item">
+                <span class="nav-icon">📈</span>
+                <span>Insight</span>
+            </a>
+
+            <a href="hosting.html" class="nav-item">
+                <span class="nav-icon">🖥️</span>
+                <span>Hosting</span>
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <a href="settings.html" class="nav-item">
+                <span class="nav-icon">⚙️</span>
+                <span>Pengaturan</span>
+            </a>
+
+            <button id="logoutButton" class="logout-button">
+                <span class="nav-icon">🚪</span>
+                <span>Logout</span>
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="main-content">
+
+        <!-- HEADER -->
+        <header class="topbar">
+
+            <div>
+                <p class="page-label">OVERVIEW</p>
+                <h1>Dashboard</h1>
+                <p class="page-description">
+                    Pantau bisnis website kamu dari satu tempat.
+                </p>
+            </div>
+
+            <div class="admin-profile">
+                <div class="profile-avatar">A</div>
+
+                <div>
+                    <strong>Admin</strong>
+                    <span>Administrator</span>
+                </div>
+            </div>
+
+        </header>
+
+
+        <!-- STATS -->
+        <section class="stats-grid">
+
+            <div class="stat-card">
+                <div class="stat-top">
+                    <span class="stat-icon">👥</span>
+                    <span class="stat-label">PELANGGAN</span>
+                </div>
+
+                <h2 id="totalCustomers">0</h2>
+                <p>Total pelanggan</p>
+            </div>
+
+
+            <div class="stat-card">
+                <div class="stat-top">
+                    <span class="stat-icon">🎯</span>
+                    <span class="stat-label">PROSPECT</span>
+                </div>
+
+                <h2 id="totalProspects">0</h2>
+                <p>Calon pelanggan</p>
+            </div>
+
+
+            <div class="stat-card">
+                <div class="stat-top">
+                    <span class="stat-icon">📁</span>
+                    <span class="stat-label">PROJECT</span>
+                </div>
+
+                <h2 id="activeProjects">0</h2>
+                <p>Project berjalan</p>
+            </div>
+
+
+            <div class="stat-card">
+                <div class="stat-top">
+                    <span class="stat-icon">💰</span>
+                    <span class="stat-label">PENDAPATAN</span>
+                </div>
+
+                <h2 id="totalRevenue">Rp0</h2>
+                <p>Total pembayaran</p>
+            </div>
+
+        </section>
+
+
+        <!-- CONTENT GRID -->
+        <section class="dashboard-grid">
+
+            <!-- PROJECT TERBARU -->
+            <div class="dashboard-card">
+
+                <div class="card-header">
+                    <div>
+                        <span class="section-label">PROJECT</span>
+                        <h3>Project Terbaru</h3>
+                    </div>
+
+                    <a href="projects.html" class="view-all">
+                        Lihat semua →
+                    </a>
+                </div>
+
+                <div id="recentProjects" class="list-container">
+                    <div class="empty-state">
+                        Belum ada project.
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- PELANGGAN TERBARU -->
+            <div class="dashboard-card">
+
+                <div class="card-header">
+                    <div>
+                        <span class="section-label">CUSTOMER</span>
+                        <h3>Pelanggan Terbaru</h3>
+                    </div>
+
+                    <a href="customers.html" class="view-all">
+                        Lihat semua →
+                    </a>
+                </div>
+
+                <div id="recentCustomers" class="list-container">
+                    <div class="empty-state">
+                        Belum ada pelanggan.
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- HOSTING & DOMAIN -->
+        <section class="dashboard-card expiry-card">
+
+            <div class="card-header">
+
+                <div>
+                    <span class="section-label">MONITORING</span>
+                    <h3>Masa Aktif Hosting & Domain</h3>
+                </div>
+
+            </div>
+
+            <div id="expiryList" class="expiry-list">
+
+                <div class="empty-state">
+                    Belum ada data hosting atau domain.
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/dashboard.js"></script>
+
+</body>
+</html>
