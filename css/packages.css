@@ -693,7 +693,7 @@ body {
     .toolbar {
         flex-direction: column;
     }
-
+ 
     .search-box {
         width: 100%;
         height: 42px;

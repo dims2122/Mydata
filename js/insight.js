@@ -519,7 +519,7 @@ async function loadPaymentInsight(userId) {
         return;
     }
 
- 
+  
     paymentInsight.innerHTML =
         sorted.map(
             ([method, count]) => `
