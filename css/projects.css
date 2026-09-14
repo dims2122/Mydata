@@ -851,7 +851,7 @@ tbody tr:hover {
     .toolbar {
         flex-direction: column;
     }
-
+ 
     .search-box {
         max-width: none;
     }
